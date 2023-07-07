@@ -30,4 +30,9 @@
   <button (click)="login()">Bejelentkezés</button>
   <p *ngIf="loginAttempt && !loginResult">Hibás bejelentkezés</p>
   <p *ngIf="replicationStarted">Az adatbázis letöltés elindult!</p>
+
+  <br />
+  <button (click)="cleanUpDeletedRows()">Takarítás</button>
+
+  <button (click)="backupToLatestRevision()">Adatbázis visszaállítása</button>
 </div>

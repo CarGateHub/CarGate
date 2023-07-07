@@ -4,6 +4,7 @@ import { DestinationService } from "src/app/services/destination.service";
 import { DriverService } from "src/app/services/driver.service";
 import { EntryService } from "src/app/services/entry.service";
 import { LicensePlateService } from "src/app/services/license-plate.service";
+import axios from "axios";
 const PouchDB = require("pouchdb").default;
 
 @Component({
@@ -99,6 +100,66 @@ export class LoginBoxComponent {
         console.log("Replication error");
         console.log(err);
       });
+  }
+
+  async cleanUpDeletedRows() {
+    let result = confirm(
+      "Mindegyik portán újra kell tölteni az alkalmazást mielőtt továbbmész..."
+    );
+    if (result === true) {
+      let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
+      if (result2 === true) {
+        axios
+          .get(
+            "https://" +
+              this.username +
+              ":" +
+              this.password +
+              "@" +
+              this.hostandport +
+              "/" +
+              "CLEANUP"
+          )
+          .then((response) => {
+            alert(
+              "Várj 5 percet amíg megtörténik a csoda és jelentkezz be újra"
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
+  }
+
+  async backupToLatestRevision() {
+    let result = confirm(
+      "Mindegyik portán újra kell tölteni az alkalmazást mielőtt továbbmész..."
+    );
+    if (result === true) {
+      let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
+      if (result2 === true) {
+        axios
+          .get(
+            "https://" +
+              this.username +
+              ":" +
+              this.password +
+              "@" +
+              this.hostandport +
+              "/" +
+              "BACKUP"
+          )
+          .then((response) => {
+            alert(
+              "Várj 10 percet amíg megtörténik a csoda és jelentkezz be újra"
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
   }
 
   constructor(private dbAuthService: DBAuthService) {}
