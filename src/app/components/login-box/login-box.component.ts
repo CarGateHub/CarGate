@@ -112,10 +112,7 @@ export class LoginBoxComponent {
         axios
           .get("https://" + this.hostandport + "/" + "CLEANUP", {
             headers: {
-              Authorization: Buffer.from(
-                this.username + ":" + this.password,
-                "base64"
-              ).toString(),
+              Authorization: btoa(this.username + ":" + this.password),
             },
           })
           .then((response) => {
