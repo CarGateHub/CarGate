@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1688758106040,
+  "index": "https://cargatehub.github.io/CarGate/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://cargatehub.github.io/CarGate/favicon.ico",
+        "https://cargatehub.github.io/CarGate/index.html",
+        "https://cargatehub.github.io/CarGate/main.69d0bf90542cbd7c.js",
+        "https://cargatehub.github.io/CarGate/manifest.webmanifest",
+        "https://cargatehub.github.io/CarGate/polyfills.c2c4da0cd84dcabd.js",
+        "https://cargatehub.github.io/CarGate/runtime.0afd39bcf6432303.js",
+        "https://cargatehub.github.io/CarGate/styles.eb8813735e27ba0b.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-128x128.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-144x144.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-152x152.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-192x192.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-384x384.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-512x512.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-72x72.png",
+        "https://cargatehub.github.io/CarGate/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://cargatehub.github.io/CarGate/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://cargatehub.github.io/CarGate/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://cargatehub.github.io/CarGate/index.html": "cb566fbe43fa368a9975636c1927a8e4cc32f9e6",
+    "https://cargatehub.github.io/CarGate/main.69d0bf90542cbd7c.js": "478b0854c922e5feb7277787f371ae4346700214",
+    "https://cargatehub.github.io/CarGate/manifest.webmanifest": "999d1d804628d73a017803100742b9da43e45481",
+    "https://cargatehub.github.io/CarGate/polyfills.c2c4da0cd84dcabd.js": "d3acb569d793f4b361de929e8fe98835d3ceefbf",
+    "https://cargatehub.github.io/CarGate/runtime.0afd39bcf6432303.js": "cb43d377312157f2dcfa741126bcff9acb70495e",
+    "https://cargatehub.github.io/CarGate/styles.eb8813735e27ba0b.css": "0d269f7c92ba8aae069537e2095bb42f82b0f0e7"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
