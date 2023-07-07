@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1688768165158,
+  "timestamp": 1688768370167,
   "index": "https://cargatehub.github.io/CarGate/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://cargatehub.github.io/CarGate/favicon.ico",
         "https://cargatehub.github.io/CarGate/index.html",
-        "https://cargatehub.github.io/CarGate/main.ff582635ac77c45f.js",
+        "https://cargatehub.github.io/CarGate/main.f01b25a5cc27963d.js",
         "https://cargatehub.github.io/CarGate/manifest.webmanifest",
         "https://cargatehub.github.io/CarGate/polyfills.c2c4da0cd84dcabd.js",
         "https://cargatehub.github.io/CarGate/runtime.0afd39bcf6432303.js",
@@ -52,8 +52,8 @@
     "https://cargatehub.github.io/CarGate/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://cargatehub.github.io/CarGate/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://cargatehub.github.io/CarGate/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://cargatehub.github.io/CarGate/index.html": "845591a789b0bc62ab4e600f60e9b5cccec6667e",
-    "https://cargatehub.github.io/CarGate/main.ff582635ac77c45f.js": "4916b07ac26551e7014b3f52cd31833bed389715",
+    "https://cargatehub.github.io/CarGate/index.html": "b7739d652f4b328fdde0c4f92916470a71bd781c",
+    "https://cargatehub.github.io/CarGate/main.f01b25a5cc27963d.js": "8fd638fb0905dcfc84773fed5cf352fec79895e8",
     "https://cargatehub.github.io/CarGate/manifest.webmanifest": "999d1d804628d73a017803100742b9da43e45481",
     "https://cargatehub.github.io/CarGate/polyfills.c2c4da0cd84dcabd.js": "d3acb569d793f4b361de929e8fe98835d3ceefbf",
     "https://cargatehub.github.io/CarGate/runtime.0afd39bcf6432303.js": "cb43d377312157f2dcfa741126bcff9acb70495e",
