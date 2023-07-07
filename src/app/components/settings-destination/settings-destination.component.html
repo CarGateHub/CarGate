@@ -1,0 +1,51 @@
+<fieldset id="destination_settings_container">
+  <legend>Helyszín kezelése</legend>
+  <fieldset>
+    <legend>Új helyszín felvitele</legend>
+    <label id="newDestinationLabel" for="newDestinationInput">Helyszín:</label>
+    <input
+      [(ngModel)]="newDestinationInput"
+      type="text"
+      id="newDestinationInput"
+      name="newDestinationInput"
+      placeholder=""
+      oninput="this.value = this.value.toUpperCase()"
+    />
+    <button (click)="addNewDestination()">Elküld</button>
+  </fieldset>
+  <fieldset>
+    <legend>A rendszerben lévő helyszínek</legend>
+    <app-entity-search-and-select
+      #settingsdestinationdestinationSearchAndSelect
+      [entityContentName]="'Helyszín:'"
+      [unknownHandling]="false"
+      [entityName]="'settings_destination'"
+      (searchEntityEvent)="filterForDestinations($event)"
+      (selectedEntityEvent)="selectedDestination($event)"
+    ></app-entity-search-and-select>
+
+    <div class="{{ calculateClass() }}">
+      <div class="updateSelectedDestinationContainer">
+        <label for="updateDestinationLabel">Helyszín:</label>
+
+        <input
+          type="text"
+          id="updateDestinationLabel"
+          name="updateDestinationLabel"
+          placeholder=""
+          oninput="this.value = this.value.toUpperCase()"
+          [(ngModel)]="updateDestinationNameInput"
+        />
+
+        <br />
+
+        <button (click)="editDestination(selectedDestinationEntity)">
+          Mentés
+        </button>
+        <button (click)="deleteDestination(selectedDestinationEntity)">
+          Törlés
+        </button>
+      </div>
+    </div>
+  </fieldset>
+</fieldset>

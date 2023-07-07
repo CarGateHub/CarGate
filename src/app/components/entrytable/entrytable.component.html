@@ -1,0 +1,55 @@
+<div id="entry_table_container">
+  <table id="entryTable">
+    <thead id="entryTableHead">
+      <tr>
+        <th class="table_header" style="width: 15%">Rendszám</th>
+        <th class="table_header" style="width: 20%">Sofőr</th>
+        <th class="table_header" style="width: 16%">Kihez/Hová</th>
+        <th class="table_header" style="width: 15%">Dátum</th>
+        <th class="table_header" style="width: 5%">Írány</th>
+        <th class="table_header" style="width: 5%">Porta</th>
+        <th class="table_header" style="width: 20%">Megjegyzés</th>
+        <th class="table_header" style="width: 4%"></th>
+      </tr>
+    </thead>
+    <tbody id="entryTableBody">
+      <tr
+        *ngFor="let entry of entriesArray"
+        id="entry{{ entry._id }}"
+        class="table_row"
+        (dblclick)="doubleClick(entry)"
+      >
+        <td>
+          {{ getLicensePlateContent(entry.license_plate) }}
+        </td>
+        <td [ngClass]="driverClassCalculator(entry.driver)">
+          {{ entry.driver.content }}
+        </td>
+        <td>
+          {{ entry.destination.content }}
+        </td>
+        <td>
+          {{ converToDate(entry.time) }}
+        </td>
+        <td>{{ entry.direction }}</td>
+        <td>{{ entry.porta }}</td>
+        <td>{{ entry.comment }}</td>
+        <td>
+          <button
+            type="button"
+            style="cursor: pointer"
+            (click)="editEntry(entry)"
+          >
+            🔧</button
+          ><button
+            type="button"
+            style="cursor: pointer"
+            (click)="deleteEntry(entry)"
+          >
+            ❌
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

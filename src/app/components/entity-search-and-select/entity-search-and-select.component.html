@@ -1,0 +1,25 @@
+<div class="entity_search_container">
+  <div class="entity_search_input_container">
+    <label
+      class="entity_search_field_label"
+      for="entitySearch{{ entityContentName }}"
+      >{{ entityContentName }}</label
+    >
+    <input
+      *ngIf="!withoutSearch"
+      [(ngModel)]="searchTxt"
+      type="text"
+      class="entity_search_field"
+      id="entitySearch{{ entityContentName }}"
+      name="entitySearch{{ entityContentName }}"
+      placeholder="{{ placeholderContent }}"
+      (keyup)="triggerSearch()"
+      oninput="this.value = this.value.toUpperCase()"
+    />
+  </div>
+  <div class="entity_table_container">
+    <table class="entity_table">
+      <tbody class="entity_tbody" id="{{ entityName }}_entity_tbody"></tbody>
+    </table>
+  </div>
+</div>

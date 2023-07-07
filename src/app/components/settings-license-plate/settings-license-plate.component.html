@@ -1,0 +1,152 @@
+<fieldset id="license_plate_settings_container">
+  <legend>Rendszámok kezelése</legend>
+  <fieldset>
+    <legend>Új rendszám felvitele</legend>
+    <label id="newLicencePlateLable" for="newLicencePlateInput"
+      >Rendszám:</label
+    >
+    <input
+      [(ngModel)]="newLicencePlateInput"
+      type="text"
+      id="newLicencePlateInput"
+      name="newLicencePlateInput"
+      placeholder=""
+      oninput="this.value = this.value.toUpperCase()"
+    />
+    <button (click)="addNewLicensePlate()">Elküld</button>
+  </fieldset>
+  <fieldset>
+    <legend>Rendszerben lévő rendszámok</legend>
+    <app-entity-search-and-select
+      #settingslicensePlatelicensePlateSearchAndSelect
+      [entityContentName]="'Rendszám:'"
+      [entityName]="'settings_license_plates_in_the_system'"
+      [unknownHandling]="false"
+      (searchEntityEvent)="filterForLicensePlates($event)"
+      (selectedEntityEvent)="selectedLicensePlate($event)"
+    ></app-entity-search-and-select>
+
+    <div class="{{ calculateClass() }}">
+      <div class="updateSelectedLicensePlateContainer">
+        <label for="updateLicensePlateLabel">kiválasztott helyszín:</label>
+        <input
+          type="text"
+          id="updateLicensePlateLabel"
+          name="updateLicensePlateLabel"
+          placeholder=""
+          oninput="this.value = this.value.toUpperCase()"
+          [(ngModel)]="updateLicensePlateContentInput"
+        />
+        <br />
+
+        <button (click)="editLicensePlate(selectedLicensePlateEntity)">
+          Mentés
+        </button>
+        <button (click)="deleteLicensePlate(selectedLicensePlateEntity)">
+          Törlés
+        </button>
+      </div>
+
+      <fieldset>
+        <legend>A kiválasztott rendszámhoz hozzárendelt sofőrők</legend>
+        <app-entity-search-and-select
+          #settingslicensePlatedriversForTheSelectedLicensePlateSearchAndSelect
+          [entityContentName]="'Sofőr:'"
+          [entityName]="
+            'settings_license_plates_driver_for_selected_license_plate'
+          "
+          [unknownHandling]="false"
+          [withoutSearch]="true"
+          (selectedEntityEvent)="
+            selectedDriversForTheSelectedLicensePlate($event)
+          "
+        ></app-entity-search-and-select>
+        <div
+          *ngIf="
+            selectedDriverForTheSelectedLicensePlate &&
+            selectedLicensePlateEntity
+          "
+        >
+          <p>
+            kiválasztott sofőr:{{
+              selectedDriverForTheSelectedLicensePlate.content
+            }}
+          </p>
+          <button
+            (click)="
+              deleteDriverFromTheLicensePlate(
+                selectedLicensePlateEntity,
+                selectedDriverForTheSelectedLicensePlate
+              )
+            "
+          >
+            Hozzárendelés törlése
+          </button>
+        </div>
+      </fieldset>
+      <fieldset style="display: none">
+        <legend>
+          A kiválasztott rendszámhoz tartozó automatikusan hozzárendelt sofőrők
+        </legend>
+        <app-entity-search-and-select
+          #settingslicensePlateautoDriversForTheSelectedLicensePlateSearchAndSelect
+          [entityContentName]="'Sofőr:'"
+          [entityName]="
+            'settings_license_plates_driver_for_selected_license_plate_auto'
+          "
+          [unknownHandling]="false"
+          [withoutSearch]="true"
+          (selectedEntityEvent)="
+            selectedDriversEverExistedWithSelectedLicensePlate($event)
+          "
+        ></app-entity-search-and-select>
+        <div
+          *ngIf="
+            selectedDriverEverExistedWithSelectedLicensePlate &&
+            selectedLicensePlateEntity
+          "
+        >
+          <p>
+            kiválasztott sofőr:{{
+              selectedDriverEverExistedWithSelectedLicensePlate.content
+            }}
+          </p>
+          <button
+            (click)="
+              deleteAutomaticDriverFromTheLicensePlate(
+                selectedLicensePlateEntity,
+                driversEverExistedWithSelectedLicensePlate
+              )
+            "
+          >
+            Hozzárendelés törlése
+          </button>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Sofőrők keresése majd hozzárendelése</legend>
+        <app-entity-search-and-select
+          #settingslicensePlateaddDriversForTheSelectedLicensePlateSearchAndSelect
+          [entityContentName]="'Sofőr:'"
+          [entityName]="'settings_license_plates_driver'"
+          [unknownHandling]="false"
+          (searchEntityEvent)="filterForDrivers($event)"
+          (selectedEntityEvent)="selectedDriver($event)"
+        ></app-entity-search-and-select>
+        <div *ngIf="selectedDriverToAdd && selectedLicensePlateEntity">
+          <p>kiválasztott sofőr:{{ selectedDriverToAdd.content }}</p>
+          <button
+            (click)="
+              addDriverToSelectedLicensePlate(
+                selectedLicensePlateEntity,
+                selectedDriverToAdd
+              )
+            "
+          >
+            Hozzárendel
+          </button>
+        </div>
+      </fieldset>
+    </div>
+  </fieldset>
+</fieldset>

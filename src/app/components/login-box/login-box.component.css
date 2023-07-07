@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Style the label */
+label {
+  font-weight: bold;
+  font-size: 18px;
+  color: #444;
+}
+
+/* Style the input fields */
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  width: 200px;
+  font-size: 16px;
+}
+
+/* Style the button */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+/* Style the error message */
+p:first-of-type {
+  color: #ff6347;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+/* Style the success message */
+p:last-of-type {
+  color: #008000;
+  font-weight: bold;
+}

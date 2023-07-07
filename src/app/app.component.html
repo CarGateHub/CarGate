@@ -1,0 +1,6 @@
+<app-new-entry-window *ngIf="databaseConnectionValid"> </app-new-entry-window>
+<app-login-box
+  *ngIf="!databaseConnectionValid"
+  (loginResultEvent)="checkLogin($event)"
+></app-login-box>
+<router-outlet></router-outlet>
