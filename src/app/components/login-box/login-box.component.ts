@@ -110,16 +110,14 @@ export class LoginBoxComponent {
       let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
       if (result2 === true) {
         axios
-          .get(
-            "https://" +
-              this.username +
-              ":" +
-              this.password +
-              "@" +
-              this.hostandport +
-              "/" +
-              "CLEANUP"
-          )
+          .get("https://" + this.hostandport + "/" + "CLEANUP", {
+            headers: {
+              Authorization: Buffer.from(
+                this.username + ":" + this.password,
+                "base64"
+              ).toString(),
+            },
+          })
           .then((response) => {
             alert(
               "Várj 5 percet amíg megtörténik a csoda és jelentkezz be újra"
