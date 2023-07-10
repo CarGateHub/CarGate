@@ -157,8 +157,9 @@ export class NewEntryWindowComponent {
     }
     this.newEntryButtonIn.nativeElement.disabled = true;
     this.newEntryButtonOut.nativeElement.disabled = true;
-
-    await EntryService.removeOldEntries();
+    if (this.porta1RadioButtonIsChecked === false) {
+      await EntryService.removeOldEntries();
+    }
   }
 
   ngAfterViewInit() {
