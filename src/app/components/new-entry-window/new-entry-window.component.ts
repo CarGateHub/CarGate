@@ -8,6 +8,7 @@ import { EntryService } from "../../services/entry.service";
 import { LicensePlateService } from "../../services/license-plate.service";
 import { UpdateEntryPopupComponent } from "../update-entry-popup/update-entry-popup.component";
 import * as XLSX from "xlsx";
+import { MessageSenderService } from "src/app/services/message-sender.service";
 
 @Component({
   selector: "app-new-entry-window",
@@ -94,6 +95,7 @@ export class NewEntryWindowComponent {
     public destinationService: DestinationService,
     public driverService: DriverService,
     public entryService: EntryService,
+    public messageSenderService: MessageSenderService,
     private cdr: ChangeDetectorRef
   ) {
     let y = new Date();
@@ -159,6 +161,9 @@ export class NewEntryWindowComponent {
     this.newEntryButtonOut.nativeElement.disabled = true;
     if (this.porta1RadioButtonIsChecked === false) {
       await EntryService.removeOldEntries();
+      this.messageSenderService.SendMessage("Port 2 reloaded the window");
+    } else {
+      this.messageSenderService.SendMessage("Port 1 reloaded the window");
     }
   }
 
