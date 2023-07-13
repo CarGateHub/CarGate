@@ -5,6 +5,7 @@ import { DriverService } from "src/app/services/driver.service";
 import { EntryService } from "src/app/services/entry.service";
 import { LicensePlateService } from "src/app/services/license-plate.service";
 import axios from "axios";
+import { MessageSenderService } from "src/app/services/message-sender.service";
 const PouchDB = require("pouchdb").default;
 
 @Component({
@@ -19,6 +20,8 @@ export class LoginBoxComponent {
   password: string = "";
   hostandport: string = "";
 
+  error_count = 0;
+  try_count = 0;
   loginAttempt: boolean = false;
   loginResult: boolean = true;
   replicationStarted: boolean = false;
@@ -89,6 +92,10 @@ export class LoginBoxComponent {
       )
       .on("complete", (info: any) => {
         this.replications.push(database);
+        this.try_count++;
+        if (this.try_count == 4) {
+          this.checkErrors();
+        }
         if (this.replications.length === 4) {
           window.location.reload();
           //this.loginResultEvent.emit(this.loginResult);
@@ -97,9 +104,23 @@ export class LoginBoxComponent {
         console.log(info);
       })
       .on("error", (err: any) => {
+        this.error_count++;
+        this.try_count++;
+        if (this.try_count == 4) {
+          this.checkErrors();
+        }
         console.log("Replication error");
         console.log(err);
       });
+  }
+
+  checkErrors() {
+    if (this.error_count > 0) {
+      this.messageSenderService.SendMessage("Replication error");
+      alert("Hiba történt az adatbázis betöltésekor.");
+      window.localStorage.clear();
+      window.location.reload();
+    }
   }
 
   async cleanUpDeletedRows() {
@@ -157,5 +178,8 @@ export class LoginBoxComponent {
     }
   }
 
-  constructor(private dbAuthService: DBAuthService) {}
+  constructor(
+    private dbAuthService: DBAuthService,
+    public messageSenderService: MessageSenderService
+  ) {}
 }
