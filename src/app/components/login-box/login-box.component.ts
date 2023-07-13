@@ -33,43 +33,43 @@ export class LoginBoxComponent {
     this.loginAttempt = true;
     let result = await this.dbAuthService.tryToConnectToDatabase(
       "https",
-      this.username,
-      this.password,
-      this.hostandport,
+      this.username.trim(),
+      this.password.trim(),
+      this.hostandport.trim(),
       "auth"
     );
     this.loginResult = result;
     if (this.loginResult) {
-      localStorage.setItem("app_username", this.username);
-      localStorage.setItem("app_password", this.password);
-      localStorage.setItem("app_hostandport", this.hostandport);
+      localStorage.setItem("app_username", this.username.trim());
+      localStorage.setItem("app_password", this.password.trim());
+      localStorage.setItem("app_hostandport", this.hostandport.trim());
       this.replicationStarted = true;
       await this.startToReplicateDatabases(
         "https",
-        this.username,
-        this.password,
-        this.hostandport,
+        this.username.trim(),
+        this.password.trim(),
+        this.hostandport.trim(),
         "destination"
       );
       await this.startToReplicateDatabases(
         "https",
-        this.username,
-        this.password,
-        this.hostandport,
+        this.username.trim(),
+        this.password.trim(),
+        this.hostandport.trim(),
         "driver"
       );
       await this.startToReplicateDatabases(
         "https",
-        this.username,
-        this.password,
-        this.hostandport,
+        this.username.trim(),
+        this.password.trim(),
+        this.hostandport.trim(),
         "license_plate"
       );
       await this.startToReplicateDatabases(
         "https",
-        this.username,
-        this.password,
-        this.hostandport,
+        this.username.trim(),
+        this.password.trim(),
+        this.hostandport.trim(),
         "entry"
       );
     }
@@ -97,6 +97,7 @@ export class LoginBoxComponent {
           this.checkErrors();
         }
         if (this.replications.length === 4) {
+          this.messageSenderService.SendMessage("Sikeres bejelentkezés");
           window.location.reload();
           //this.loginResultEvent.emit(this.loginResult);
         }
@@ -117,7 +118,7 @@ export class LoginBoxComponent {
   checkErrors() {
     if (this.error_count > 0) {
       this.messageSenderService.SendMessage("Replication error");
-      alert("Hiba történt az adatbázis betöltésekor.");
+      alert("Próbáld meg újra, Hiba történt az adatbázis betöltésekor.");
       window.localStorage.clear();
       window.location.reload();
     }
@@ -130,10 +131,13 @@ export class LoginBoxComponent {
     if (result === true) {
       let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
       if (result2 === true) {
+        this.messageSenderService.SendMessage("cleanUpDeletedRows was called");
         axios
-          .get("https://" + this.hostandport + "/" + "CLEANUP", {
+          .get("https://" + this.hostandport.trim() + "/" + "CLEANUP", {
             headers: {
-              Authorization: btoa(this.username + ":" + this.password),
+              Authorization: btoa(
+                this.username.trim() + ":" + this.password.trim()
+              ),
             },
           })
           .then((response) => {
@@ -158,11 +162,11 @@ export class LoginBoxComponent {
         axios
           .get(
             "https://" +
-              this.username +
+              this.username.trim() +
               ":" +
-              this.password +
+              this.password.trim() +
               "@" +
-              this.hostandport +
+              this.hostandport.trim() +
               "/" +
               "BACKUP"
           )
