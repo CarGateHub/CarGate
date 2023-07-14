@@ -31,6 +31,19 @@ export class LoginBoxComponent {
   async login() {
     this.loginResult = true;
     this.loginAttempt = true;
+    if (this.username.trim() === "") {
+      alert("hiányzik a felhasználónév");
+      return;
+    }
+    if (this.password.trim() === "") {
+      alert("hiányzik a jelszó");
+      return;
+    }
+    if (this.hostandport.trim() === "") {
+      alert("Hiányzik a szerver elérhetősége");
+      return;
+    }
+
     let result = await this.dbAuthService.tryToConnectToDatabase(
       "https",
       this.username.trim(),
@@ -131,6 +144,18 @@ export class LoginBoxComponent {
     if (result === true) {
       let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
       if (result2 === true) {
+        if (this.username.trim() === "") {
+          alert("hiányzik a felhasználónév");
+          return;
+        }
+        if (this.password.trim() === "") {
+          alert("hiányzik a jelszó");
+          return;
+        }
+        if (this.hostandport.trim() === "") {
+          alert("Hiányzik a szerver elérhetősége");
+          return;
+        }
         this.messageSenderService.SendMessage("cleanUpDeletedRows was called");
         axios
           .get("https://" + this.hostandport.trim() + "/" + "CLEANUP", {
@@ -159,6 +184,18 @@ export class LoginBoxComponent {
     if (result === true) {
       let result2 = confirm("Biztosan újra lett tölteve mindegyik porta ?");
       if (result2 === true) {
+        if (this.username.trim() === "") {
+          alert("hiányzik a felhasználónév");
+          return;
+        }
+        if (this.password.trim() === "") {
+          alert("hiányzik a jelszó");
+          return;
+        }
+        if (this.hostandport.trim() === "") {
+          alert("Hiányzik a szerver elérhetősége");
+          return;
+        }
         axios
           .get(
             "https://" +
